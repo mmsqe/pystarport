@@ -71,7 +71,9 @@ class ChainCommand:
     def __call__(self, cmd, *args, stdin=None, stderr=subprocess.STDOUT, **kwargs):
         "execute chain-maind"
         args = " ".join(build_cli_args_safe(cmd, *args, **kwargs))
-        return interact(f"{self.cmd} {args}", input=stdin, stderr=stderr)
+        cli = f"{self.cmd} {args}"
+        print("mm-cli", cli)
+        return interact(cli, input=stdin, stderr=stderr)
 
 
 class CosmosCLI:
